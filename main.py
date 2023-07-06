@@ -41,17 +41,19 @@ class Window:
     def run(self):
         """Runs the main loop of the app."""
         self.grid = Grid()
-        self.reset_button = Button(300, 850, 150, 50, "Reset Grid")
+        self.reset_button = Button(150, 850, 150, 50, "Reset Grid")
         self.gaussian_blur_button = Button(270, 800, 200, 50, "Gaussian Blur")
         self.predict_button = Button(800, 300, 100, 50, "Predict")
-        self.gaussianSigma_plus_button = Button(1000, 800, 50,  50, "+")
-        self.gaussianSigma_minus_button = Button(1070, 800, 50,  50, "-")
+        self.gaussianSigma_plus_button = Button(1000, 800, 60,  60, "+")
+        self.gaussianSigma_minus_button = Button(1080, 800, 60,  60, "-")
         self.predicted_text = TextUI("Prediction: ", (950,300), (255,255,255))
-        self.sigma_value_text = TextUI("Sigma: ", (980,760), (255,255,255))
+        self.sigma_value_text = TextUI("Sigma: ", (960,750), (255,255,255))
         self.app_name = TextUI("Digit Predictor GUI, v_1.0", (700, 50), (255,255,255))
         self.app_name.fontSize = 40
-        self.sigma_value_text.fontSize = 30
+        self.sigma_value_text.fontSize = 40
         self.predicted_text.fontSize = 100
+        self.gaussianSigma_plus_button.font_size = 40
+        self.gaussianSigma_minus_button.font_size = 40 
         
         while self.running:
             self.screen.fill((60,60,90))
