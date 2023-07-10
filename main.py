@@ -6,6 +6,8 @@ from ui import Button, TextUI
 from ml import predict
 from scipy import ndimage
 from joblib import load
+import tensorflow as tf
+
 
 class Window:
     """Window renderer class"""
@@ -74,7 +76,8 @@ class Window:
             if self.grid.grid_array.sum() != 0:
                 final_array = self.grid.get_gaussianBlurerd_array(sigma=self.sigma)
                 # prediction = str(self.model.predict_input(final_array)[0])
-                prediction = str(predict(final_array, self.model)[0])
+                # prediction = str(predict(final_array, self.model)[0])
+                prediction = str(predict(final_array, self.model))
                 self.predicted_text.render(self.screen, prediction)
                 
             # if self.gaussian_blur_button.render(self.screen):
@@ -101,7 +104,9 @@ if __name__ == "__main__":
     # model = Model()
     # model.save_model()
     # # This is loading already trained and saved model
-    model = load('sgd_clf.joblib')
+    # model = load('sgd_clf.joblib')
+    # tensorflow model
+    model = tf.keras.models.load_model('tf_keras/digit_predictor.model')
     
     app = Window(model=model)
     app.run()

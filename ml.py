@@ -1,5 +1,6 @@
 from joblib import dump, load
 from sklearn.datasets import fetch_openml
+import numpy as np
 # from sklearn.svm import SVC
 # from sklearn.linear_model import SGDClassifier
 
@@ -32,6 +33,14 @@ from sklearn.datasets import fetch_openml
 # print("Shape:", any_num.shape)
 
 
+# def predict(arr, model=None):
+#     """Predict function for passing array and model and it returns output ie prediction."""
+#     output = model.predict([arr.reshape(784)])
+#     return output
+
+
 def predict(arr, model=None):
-    output = model.predict([arr.reshape(784)])
-    return output
+    """Predict function for passing array and model and it returns output ie prediction."""
+    output = model.predict([arr.reshape(1,28,28)])
+    prediction = np.argmax(output)
+    return prediction
